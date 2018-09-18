@@ -5,7 +5,11 @@ var bodyParser = require('body-parser');
 var credentials = require('./credentials');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var uuid = require('uuid/v4')
+var uuid = require('uuid/v4');
+var flash = require('connect-flash');
+
+
+
 
 
 /////////////////////////////
@@ -17,6 +21,8 @@ var certificate = fs.readFileSync('./ssl/ico.crt', 'utf8');
 var ssl = { key: privateKey, cert: certificate };
 /////////////////////////////
 
+
+
 var app = express();
 
 // Set middleware 
@@ -25,6 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(flash());
 
 // Static content 
 app.use("/userpanel", express.static(__dirname + "/public/userpanel")); // for any url that start wih /userpanel (user panel page)
@@ -54,7 +61,7 @@ app.set('view engine', 'handlebars');
 // Set authentication 
 var auth = require('./lib/auth.js')(app, {
     successRedirect: '/', 
-    failureRedirect: '/',
+    failureRedirect: '/login',
 });
 
 // Links in Passport middleware
@@ -271,6 +278,7 @@ app.post('/signup', function(req, res) {
     // Return to home page
     res.redirect(303, '/')
 });
+
 
 
 

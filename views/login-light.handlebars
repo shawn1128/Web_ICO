@@ -14,8 +14,13 @@
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" href="assets/css/style.css?ver=142">
 	<link rel="stylesheet" href="assets/css/theme.css?ver=142">
+    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+
+
 	
 </head>
+
+
 
 <body class="theme-light" data-spy="scroll" data-target="#mainnav" data-offset="80">
 
@@ -36,17 +41,17 @@
                             <li><a href="/auth/google" class="btn-icon btn-google"><em class="fab fa-google"></em>Google</a></li>
                         </ul>
                         <div class="or-saparator"><span>or</span></div>
-                        <form action="#" class="login-form">
+                        <form action="/auth/cognito" method="POST" class="login-form" >
                             <div class="input-item">
-                                <input type="text" placeholder="Your Email" class="input-line-simple">
+                                <input name="username" type="text" placeholder="Your Email" class="input-line-simple" required>
                             </div>
                             <div class="input-item">
-                                <input type="password" placeholder="Password" class="input-line-simple">
+                                <input name="password" type="password" placeholder="Password" class="input-line-simple" required>
                             </div>
                             <div class="gaps"></div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <button class="btn btn-sm">Log in</button>
-                                <a href="#" class="simple-link">Forgot password?</a>
+                                <button type="submit" class="btn btn-sm">Log in</button>
+                                <a href="" class="simple-link">Forgot password?</a>
                             </div>
                         </form>
                     </div>
@@ -57,7 +62,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </di$.ajax({
+  type: "POST",
+  url: '/auth/cognito',
+  data: { username: username, password: password }
+})v>
 	<!-- Preloader !remove please if you do not want -->
 	<div id="preloader">
 		<div id="loader"></div>

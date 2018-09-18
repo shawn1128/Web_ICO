@@ -15,7 +15,22 @@
 	<link rel="stylesheet" href="assets/css/style.css?ver=142">
 	<link rel="stylesheet" href="assets/css/theme.css?ver=142">
 	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
+
+
+<script>
+    $(document).ready(function(){
+        $('#pwd, #repeatedPwd').on('keyup', function(){
+          if ($('#pwd').val() == $('#repeatedPwd').val()) {
+            $('#message').html('Matching').css('color', 'green');
+          } else 
+            $('#message').html('Not Matching').css('color', 'red');
+        });
+    });
+
+</script>
 
 <body class="theme-light" data-spy="scroll" data-target="#mainnav" data-offset="80">
 
@@ -36,21 +51,22 @@
                             <li><a href="/auth/google" class="btn-icon btn-google"><em class="fab fa-google"></em>Google</a></li>
                         </ul>
                         <div class="or-saparator"><span>or</span></div>
-                        <form action="/signup" method="POST" class="login-form">
+                        <form action="/process/signup" method="POST" class="login-form">
                             <div class="input-item">
-                                <input type="text" placeholder="Your Name" class="input-line-simple">
+                                <input type="text" name = "name" placeholder="Your Name" class="input-line-simple" required>
                             </div>
                             <div class="input-item">
-                                <input type="text" placeholder="Your Email" class="input-line-simple">
+                                <input type="text" name = "email" placeholder="Your Email" class="input-line-simple" required>
                             </div>
                             <div class="input-item">
-                                <input type="password" placeholder="Password" class="input-line-simple">
+                                <input id="pwd" type="password" name = "password" placeholder="Password" class="input-line-simple" required>
                             </div>
                             <div class="input-item">
-                                <input type="password" placeholder="Repeat Password" class="input-line-simple">
+                                <input id="repeatedPwd" type="password" name = "repeatPassword" placeholder="Repeat Password" class="input-line-simple" required>
+                                <span id='message'></span>
                             </div>
                             <div class="input-item text-left">
-                                <input type="checkbox" name="aggrement" id="aggrement" class="input-checkbox">
+                                <input type="checkbox" name="aggrement" id="aggrement" class="input-checkbox" required>
                                 <label for="aggrement">I agree to terms &amp; Policy.</label>
                             </div>
                             <div class="text-left">

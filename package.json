@@ -9,13 +9,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "amazon-cognito-identity-js": "^2.0.26",
     "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
+    "dialog": "^0.3.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "mysql": "^2.16.0",
+    "node-fetch": "^2.2.0",
     "passport": "^0.4.0",
+    "passport-cognito": "^0.1.13",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "uuid": "^3.3.2"
